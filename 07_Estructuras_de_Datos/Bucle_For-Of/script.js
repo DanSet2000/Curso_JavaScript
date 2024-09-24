@@ -1,18 +1,6 @@
 'use strict';
 
-// Usando "Rest"
-
-// 1) Desestructuracion
-
-// Spread, porque esta en el lado DERECHO  de =
-const arr = [1, 2, ...[3, 4]];
-
-// Rest, porque esta en el lado IZQUIERDO de =
-const [a, b, ...others] = [1, 2, 3, 4, 5];
-
-console.log(a, b, others);
-
-// Ejercicio
+// Bucle For - Of
 
 const restaurant = {
   name: 'Classico Italiano',
@@ -50,34 +38,18 @@ const restaurant = {
   },
 };
 
-const [pizza, , risotto, ...otherFood] = [
-  ...restaurant.mainMenu,
-  ...restaurant.startedMenu,
-];
+const menu = [...restaurant.startedMenu, ...restaurant.mainMenu];
 
-console.log(pizza, risotto, otherFood);
+// Usando el bublce
 
-restaurant.orderPizza('Pepperoni', 'Onion', 'Cheese', 'Pineapple');
+for (const item of menu) console.log(item);
 
-// Trabajando con Objetos
+// Obtener el elemento actual
 
-const { sat, ...weekDays } = restaurant.openingHours;
+for (const item of menu.entries()) {
+  console.log(item);
+}
 
-console.log(weekDays);
-
-// 2) Funciones
-
-const add = function (...numbers) {
-  let sum = 0;
-  for (let i = 0; i < numbers.length; i++) {
-    sum = sum + numbers[i];
-  }
-  console.log(sum);
-};
-
-add(2, 3);
-add(5, 3, 7, 2);
-add(8, 2, 5, 3, 2, 1, 4);
-
-const x = [23, 5, 7];
-add(...x);
+for (const item of menu.entries()) {
+  console.log(`${item[0] + 1}: ${item[1]}`);
+}
