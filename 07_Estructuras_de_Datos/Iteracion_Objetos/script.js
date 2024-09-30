@@ -1,7 +1,5 @@
 'use strict';
 
-// Bucle For - Of
-
 const restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -38,41 +36,27 @@ const restaurant = {
   },
 };
 
-const menu = [...restaurant.startedMenu, ...restaurant.mainMenu];
+// Iteracion de Property Names
 
-// Usando el bublce
+const properties = Object.keys(restaurant.openingHours);
+console.log(properties);
 
-for (const item of menu) console.log(item);
+console.log(`We are open on ${properties.length} days:`);
 
-// Obtener el elemento actual
-
-for (const item of menu.entries()) {
-  console.log(item);
+for (const day of Object.keys(restaurant.openingHours)) {
+  console.log(day);
 }
 
-for (const item of menu.entries()) {
-  console.log(`${item[0] + 1}: ${item[1]}`);
+// Iteracion de Property Values
+
+const values = Object.values(restaurant.openingHours);
+console.log(values);
+
+// Entire Object (Recorre todo el objeto)
+
+const entries = Object.entries(restaurant.openingHours);
+console.log(entries);
+
+for (const [key, { open, close }] of entries) {
+  console.log(`On ${key} we open at ${open} and close at ${close}`);
 }
-
-// Encadenamiento Condicional (?.)
-
-console.log(restaurant.openingHours.mon?.open);
-
-const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
-
-for (const day of days) {
-  const open = restaurant.openingHours[day]?.open ?? 'closed';
-  console.log(`On ${day}, we open at ${open}`);
-}
-
-// Metodos
-
-console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
-
-console.log(restaurant.orderRisotto?.(0, 1) ?? 'Method does not exist');
-
-// Arreglos
-
-const users = [{ name: 'Jonas', email: 'hello@jonas.com' }];
-
-console.log(users[0]?.name ?? 'User array empty');
